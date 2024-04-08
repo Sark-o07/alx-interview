@@ -2,6 +2,7 @@
 '''A module for working with Pascal's triangle.
 '''
 
+
 def pascal_triangle(n):
     """
     The function takes in an int n and generates a pascals triangle of n rows.
