@@ -1,29 +1,35 @@
 #!/usr/bin/node
+const request = require('request');
 
-// const fetch = require('fetch');
-async function fetchProducts(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+// This function returns a Promise object holding the JSON Data
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    request(url, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        const data = JSON.parse(body);
+        resolve(data);
+      } else {
+        reject(error);
       }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(`Could not get products: ${error}`);
-    }
+    });
+  });
 }
-  
-  
-const fetchPromise = fetchProducts("https://swapi-api.alx-tools.com/api/films/3");
-fetchPromise
-.then((data) => {
-    const characters_url = data.characters;
-    return characters_url;
-})
-.then(async (characters_url) => {
-    for (const item of characters_url) {
-        const data1 = await fetchProducts(item);
-        console.log(data1.name);
+
+// Function to fetch data for a single actor URL
+async function fetchActorData(actorUrl) {
+  const actorData = await fetchData(actorUrl);
+  console.log(actorData.name);
+}
+
+const movieId = process.argv[2];
+const url = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
+const filmdata = fetchData(url);
+filmdata.then(
+  async (filmData) => {
+    const charactersUrl = filmData.characters;
+    // Fetch data for each actor URL one by one
+    for (const actorUrl of charactersUrl) {
+      await fetchActorData(actorUrl);
     }
-});
+  },
+);
