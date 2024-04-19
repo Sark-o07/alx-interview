@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
-// This function returns a Promise object holding the JSON Data
+// This function returns a Promise object holding the JSON Data ok.
 function fetchData(url) {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
