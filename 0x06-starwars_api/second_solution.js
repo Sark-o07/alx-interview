@@ -2,7 +2,7 @@
 const request = require('request');
 
 // This function returns a Promise object holding the JSON Data ok.
-function fetchData(url) {
+function fetchData (url) {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (!error && response.statusCode === 200) {
@@ -16,7 +16,7 @@ function fetchData(url) {
 }
 
 // Function to fetch data for a single actor URL
-async function fetchActorData(actorUrl) {
+async function fetchActorData (actorUrl) {
   const actorData = await fetchData(actorUrl);
   console.log(actorData.name);
 }
@@ -31,5 +31,5 @@ filmdata.then(
     for (const actorUrl of charactersUrl) {
       await fetchActorData(actorUrl);
     }
-  },
+  }
 );

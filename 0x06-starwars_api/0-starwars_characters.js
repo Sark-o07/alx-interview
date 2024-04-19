@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
-function printCharacters(characters, index) {
+function printCharacters (characters, index) {
   request(characters[index], (error, response, body) => {
     if (!error) {
       console.log(JSON.parse(body).name);
@@ -15,7 +15,7 @@ function printCharacters(characters, index) {
 const movieId = process.argv[2];
 const options = {
   url: `https://swapi-api.hbtn.io/api/films/${movieId}`,
-  method: 'GET',
+  method: 'GET'
 };
 
 request(options, (error, response, body) => {
