@@ -1,6 +1,17 @@
 #!/usr/bin/node
 const request = require('request');
 
+function printCharacters(characters, index) {
+  request(characters[index], (error, response, body) => {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
+
 const movieId = process.argv[2];
 const options = {
   url: `https://swapi-api.hbtn.io/api/films/${movieId}`,
@@ -13,14 +24,3 @@ request(options, (error, response, body) => {
     printCharacters(characters, 0);
   }
 });
-
-function printCharacters(characters, index) {
-  request(characters[index], (error, response, body) => {
-    if (!error) {
-      console.log(JSON.parse(body).name);
-      if (index + 1 < characters.length) {
-        printCharacters(characters, index + 1);
-      }
-    }
-  });
-}
