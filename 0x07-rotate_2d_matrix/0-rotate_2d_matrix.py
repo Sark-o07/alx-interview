@@ -1,4 +1,4 @@
-#!/user/bin/env python3
+#!/user/bin/python3
 """Module that defines a function which
 Rotates nxn 2D matrix 90° clockwise.
 """
