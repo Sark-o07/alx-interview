@@ -31,6 +31,4 @@ def island_perimeter(grid):
                 # Checks to see if there are horizontal neightbor(s)
                 if j > 0 and grid[i][j - 1] == 1:
                     perimeter -= 2
-            print(perimeter, f"inside the col loop j = {j} i = {i}")
-        print(perimeter, f"inside the row loop i = {i}")
     return perimeter
