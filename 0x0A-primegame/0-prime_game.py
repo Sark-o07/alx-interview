@@ -10,13 +10,13 @@ maria always goes first.
 
 
 def prime_count(n):
-    # a True array ranging from 0 - n (n inclusive)
+    # A True array ranging from 0 - n (n inclusive)
     prime_count = 0
     prime = [True for i in range(n + 1)]
     if n < 2:
         return prime_count
 
-    # starting with the first knoww prime num 2
+    # Starting with the first knoww prime num 2
     p = 2
 
     while (p * p <= n + 1):
