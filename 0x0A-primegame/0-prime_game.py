@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
-# the rules follows
-# if we have even set of prime numbers in given number ben wins
-# if odd maria wins
-# if there is no prime number at the start ben wins.
-# maria always goes first.
+"""
+the rules follows
+if we have even set of prime numbers in given number ben wins
+if odd maria wins
+if there is no prime number at the start ben wins.
+maria always goes first.
+"""
 
 
 def prime_count(n):
