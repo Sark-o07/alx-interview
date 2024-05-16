@@ -10,6 +10,15 @@ maria always goes first.
 
 
 def prime_count(n):
+    """
+    Determines the counts of prime number between 1 and
+    the given number inclusive.
+    Args:
+        n (int): the given number
+    Return:
+        the count of prime numbers
+    """
+
     # A True array ranging from 0 - n (n inclusive)
     prime_count = 0
     prime = [True for i in range(n + 1)]
@@ -32,6 +41,14 @@ def prime_count(n):
 
 
 def isWinner(x, nums):
+    """
+    Determines winner of Prime Game
+    Args:
+        x (int): no. of rounds of game
+        nums (int): upper limit of range for each round
+    Return:
+        Name of winner (Maria or Ben) or None if winner cannot be found
+    """
     ben_score = 0
     maria_score = 0
     for i in range(x):
